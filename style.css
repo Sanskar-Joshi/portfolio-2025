@@ -795,6 +795,7 @@ section.services {
 
 .portfolio-carousel .img-item {
   height: inherit;
+  width: 100%;
 }
 
 .portfolio-carousel .img-item img {
@@ -803,6 +804,7 @@ section.services {
   height: 100%;
   object-fit: contain;
   background: #000;
+  /* border-radius: 1rem; */
 }
 
 .portfolio-box .navigation {
@@ -1096,4 +1098,3 @@ section.services {
     font-size: 3.5rem;
   }
 }
-
