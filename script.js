@@ -1,5 +1,5 @@
 const navLinks = document.querySelectorAll("header nav a");
-const logoLink = document.querySelector(".logo");
+// const logoLink = document.querySelector(".logo");
 const sections = document.querySelectorAll("section");
 const menuIcon = document.querySelector("#menu-icon");
 const navbar = document.querySelector("header nav");
@@ -9,58 +9,31 @@ menuIcon.addEventListener("click", () => {
   navbar.classList.toggle("active");
 });
 
-const activePage = () => {
-  const header = document.querySelector("header");
-  const barsBox = document.querySelector(".bars-box");
+window.onscroll = () => {
+  sections.forEach((sec) => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute("id");
 
-  header.classList.remove("active");
-  setTimeout(() => {
-    header.classList.add("active");
-  }, 1100);
-
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach((links) => {
+        links.classList.remove("active");
+        document
+          .querySelector("header nav a[href*=" + id + "]")
+          .classList.add("active");
+      });
+    }
   });
 
-  barsBox.classList.add("active");
-  setTimeout(() => {
-    barsBox.classList.remove("active");
-  }, 1100);
-
-  sections.forEach((section) => {
-    section.classList.remove("active");
-  });
+  let header = document.querySelector("header");
+  header.classList.toggle("sticky", window.scrollY > 100);
 
   menuIcon.classList.remove("bx-x");
   navbar.classList.remove("active");
 };
 
-navLinks.forEach((link, idx) => {
-  link.addEventListener("click", () => {
-    if (!link.classList.contains("active")) {
-      activePage();
-
-      link.classList.add("active");
-
-      setTimeout(() => {
-        sections[idx].classList.add("active");
-      }, 1100);
-    }
-  });
-});
-
-logoLink.addEventListener("click", () => {
-  if (!navLinks[0].classList.contains("active")) {
-    activePage();
-
-    navLinks[0].classList.add("active");
-
-    setTimeout(() => {
-      sections[0].classList.add("active");
-    }, 1100);
-  }
-});
-
+// RESUME SECTION TABS
 const resumeBtns = document.querySelectorAll(".resume-btn");
 
 resumeBtns.forEach((btn, idx) => {
@@ -79,42 +52,41 @@ resumeBtns.forEach((btn, idx) => {
   });
 });
 
+// PROJECT CAROUSEL
 const arrowRight = document.querySelector(
-  ".portfolio-box .navigation .arrow-right"
+  ".project-box .navigation .arrow-right"
 );
-
 const arrowLeft = document.querySelector(
-  ".portfolio-box .navigation .arrow-left"
+  ".project-box .navigation .arrow-left"
 );
-
 let index = 0;
 
-const portfolioDetails = document.querySelectorAll(".portfolio-detail");
-const totalPortfolioItems = portfolioDetails.length;
-const imgSlide = document.querySelector(".portfolio-carousel .img-slide");
+const projectDetails = document.querySelectorAll(".project-detail");
+const totalProjectItems = projectDetails.length;
+const imgSlide = document.querySelector(".project-carousel .img-slide");
 
-const activePortfolio = () => {
+const activeProject = () => {
   imgSlide.style.transform = `translateX(calc(${index * -100}% - ${
     index * 2
   }rem))`;
 
-  portfolioDetails.forEach((detail) => {
+  projectDetails.forEach((detail) => {
     detail.classList.remove("active");
   });
-  portfolioDetails[index].classList.add("active");
+  projectDetails[index].classList.add("active");
 };
 
 arrowRight.addEventListener("click", () => {
-  if (index < totalPortfolioItems - 1) {
+  if (index < totalProjectItems - 1) {
     index++;
     arrowLeft.classList.remove("disabled");
   }
 
-  if (index === totalPortfolioItems - 1) {
+  if (index === totalProjectItems - 1) {
     arrowRight.classList.add("disabled");
   }
 
-  activePortfolio();
+  activeProject();
 });
 
 arrowLeft.addEventListener("click", () => {
@@ -127,9 +99,10 @@ arrowLeft.addEventListener("click", () => {
     arrowLeft.classList.add("disabled");
   }
 
-  activePortfolio();
+  activeProject();
 });
 
+// SERVICES HOVER EFFECT
 const serviceBoxes = document.querySelectorAll(".services-box");
 
 serviceBoxes.forEach((box) => {
@@ -145,16 +118,68 @@ serviceBoxes.forEach((box) => {
   };
 });
 
-const scrollBtn = document.querySelector(".scroll-down");
+// const activePage = () => {
+//   const header = document.querySelector("header");
+//   const barsBox = document.querySelector(".bars-box");
 
-scrollBtn.addEventListener("click", (e) => {
-  e.preventDefault();
+//   header.classList.remove("active");
+//   setTimeout(() => {
+//     header.classList.add("active");
+//   }, 1100);
 
-  activePage();
+//   navLinks.forEach((link) => {
+//     link.classList.remove("active");
+//   });
 
-  navLinks[1].classList.add("active");
+//   barsBox.classList.add("active");
+//   setTimeout(() => {
+//     barsBox.classList.remove("active");
+//   }, 1100);
 
-  setTimeout(() => {
-    sections[1].classList.add("active");
-  }, 1100);
-});
+//   sections.forEach((section) => {
+//     section.classList.remove("active");
+//   });
+
+//   menuIcon.classList.remove("bx-x");
+//   navbar.classList.remove("active");
+// };
+
+// navLinks.forEach((link, idx) => {
+//   link.addEventListener("click", () => {
+//     if (!link.classList.contains("active")) {
+//       activePage();
+
+//       link.classList.add("active");
+
+//       setTimeout(() => {
+//         sections[idx].classList.add("active");
+//       }, 1100);
+//     }
+//   });
+// });
+
+// logoLink.addEventListener("click", () => {
+//   if (!navLinks[0].classList.contains("active")) {
+//     activePage();
+
+//     navLinks[0].classList.add("active");
+
+//     setTimeout(() => {
+//       sections[0].classList.add("active");
+//     }, 1100);
+//   }
+// });
+
+// const scrollBtn = document.querySelector(".scroll-down");
+
+// scrollBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+
+//   activePage();
+
+//   navLinks[1].classList.add("active");
+
+//   setTimeout(() => {
+//     sections[1].classList.add("active");
+//   }, 1100);
+// });
