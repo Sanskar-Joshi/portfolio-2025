@@ -690,44 +690,45 @@ section.services {
 }
 
 .resume-detail.skills .resume-list {
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 3fr));
   height: auto;
   overflow: visible;
+  margin-bottom: 1rem;
 }
 
 .resume-detail.skills .resume-item {
   position: relative;
   align-items: center;
   height: auto;
+  padding: 3rem 2rem;
 }
 
 .resume-detail.skills .resume-item i {
   font-size: 8.5rem;
   transition: 0.5s;
+  margin-bottom: 1rem;
 }
 
 .resume-detail.skills .resume-item:hover i {
   color: var(--main-color);
+  transform: scale(1.1);
+}
+
+.resume-detail.skills .resume-item p {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--white-color);
+  /* text-align: center; */
+}
+
+.resume-detail.skills .resume-item:hover p {
+  color: var(--main-color);
+  /* transition: 0.3s; */
 }
 
 .resume-detail.skills .resume-item span {
-  position: absolute;
-  top: -20%;
-  background: var(--white-color);
-  color: var(--bg-color);
-  font-size: 1.6rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.6rem;
-  pointer-events: none;
-  opacity: 0;
-  transform: scale(0.9);
-  transition: 0.2s;
-}
-
-.resume-detail.skills .resume-item:hover span {
-  top: -25%;
-  opacity: 1;
-  transform: scale(1);
+  display: none;
 }
 
 .resume-detail.about .resume-list {
@@ -859,6 +860,51 @@ section.services {
   cursor: pointer;
 }
 
+/* STICKY CALL BUTTON STYLES */
+.sticky-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--main-color);
+  color: var(--bg-color);
+  padding: 1.2rem 2rem;
+  border-radius: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 0 1rem var(--main-color);
+  z-index: 1000;
+  transition: 0.3s;
+  text-decoration: none;
+  animation: float 3s ease-in-out infinite;
+}
+
+.sticky-cta i {
+  font-size: 2.4rem;
+}
+
+.sticky-cta span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sticky-cta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 2rem var(--main-color);
+  background: #65c92c;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 /* RESPONSIVE MEDIA QUERIES  */
 @media (max-width: 1200px) {
   html {
@@ -985,6 +1031,21 @@ section.services {
 @media screen and (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+
+  .sticky-cta {
+    padding: 1.5rem;
+    border-radius: 50%;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .sticky-cta span {
+    display: none;
+  }
+
+  .sticky-cta i {
+    font-size: 2.8rem;
   }
 }
 
