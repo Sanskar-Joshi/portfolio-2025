@@ -1,14 +1,15 @@
 const navLinks = document.querySelectorAll("header nav a");
-// const logoLink = document.querySelector(".logo");
 const sections = document.querySelectorAll("section");
 const menuIcon = document.querySelector("#menu-icon");
 const navbar = document.querySelector("header nav");
 
+// TOGGLE MENU
 menuIcon.addEventListener("click", () => {
   menuIcon.classList.toggle("bx-x");
   navbar.classList.toggle("active");
 });
 
+// SCROLL SPY & STICKY HEADER
 window.onscroll = () => {
   sections.forEach((sec) => {
     let top = window.scrollY;
@@ -29,6 +30,7 @@ window.onscroll = () => {
   let header = document.querySelector("header");
   header.classList.toggle("sticky", window.scrollY > 100);
 
+  // CLOSE MENU ON SCROLL
   menuIcon.classList.remove("bx-x");
   navbar.classList.remove("active");
 };
@@ -40,14 +42,18 @@ resumeBtns.forEach((btn, idx) => {
   btn.addEventListener("click", () => {
     const resumeDetails = document.querySelectorAll(".resume-detail");
 
+    // REMOVE ACTIVE FROM ALL BUTTONS
     resumeBtns.forEach((btn) => {
       btn.classList.remove("active");
     });
+    // ADD ACTIVE TO CLICKED BUTTON
     btn.classList.add("active");
 
+    // REMOVE ACTIVE FROM ALL DETAILS
     resumeDetails.forEach((detail) => {
       detail.classList.remove("active");
     });
+    // ADD ACTIVE TO THE CORRESPONDING DETAIL (based on Index)
     resumeDetails[idx].classList.add("active");
   });
 });
@@ -85,7 +91,6 @@ arrowRight.addEventListener("click", () => {
   if (index === totalProjectItems - 1) {
     arrowRight.classList.add("disabled");
   }
-
   activeProject();
 });
 
@@ -98,7 +103,6 @@ arrowLeft.addEventListener("click", () => {
   if (index === 0) {
     arrowLeft.classList.add("disabled");
   }
-
   activeProject();
 });
 
@@ -117,69 +121,3 @@ serviceBoxes.forEach((box) => {
     box.style.background = "";
   };
 });
-
-// const activePage = () => {
-//   const header = document.querySelector("header");
-//   const barsBox = document.querySelector(".bars-box");
-
-//   header.classList.remove("active");
-//   setTimeout(() => {
-//     header.classList.add("active");
-//   }, 1100);
-
-//   navLinks.forEach((link) => {
-//     link.classList.remove("active");
-//   });
-
-//   barsBox.classList.add("active");
-//   setTimeout(() => {
-//     barsBox.classList.remove("active");
-//   }, 1100);
-
-//   sections.forEach((section) => {
-//     section.classList.remove("active");
-//   });
-
-//   menuIcon.classList.remove("bx-x");
-//   navbar.classList.remove("active");
-// };
-
-// navLinks.forEach((link, idx) => {
-//   link.addEventListener("click", () => {
-//     if (!link.classList.contains("active")) {
-//       activePage();
-
-//       link.classList.add("active");
-
-//       setTimeout(() => {
-//         sections[idx].classList.add("active");
-//       }, 1100);
-//     }
-//   });
-// });
-
-// logoLink.addEventListener("click", () => {
-//   if (!navLinks[0].classList.contains("active")) {
-//     activePage();
-
-//     navLinks[0].classList.add("active");
-
-//     setTimeout(() => {
-//       sections[0].classList.add("active");
-//     }, 1100);
-//   }
-// });
-
-// const scrollBtn = document.querySelector(".scroll-down");
-
-// scrollBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-
-//   activePage();
-
-//   navLinks[1].classList.add("active");
-
-//   setTimeout(() => {
-//     sections[1].classList.add("active");
-//   }, 1100);
-// });
