@@ -12,4 +12,4 @@ Welcome to my personal portfolio repository! This project is a live showcase of 
 * **Tools:** VS Code, Google Apps Script, Boxicons
 
 ### 🔗 Live Demo
-Check out the live website here:
+Check out the live website here: https://sanskar-joshi.github.io/portfolio-2025/
